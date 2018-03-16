@@ -28,8 +28,8 @@ class Module(models.Model):
 	
 	# """ Clase Rol y Modulo """
 class Role_Module(models.Model):
-	rol_id = models.ForeignKey(Module, on_delete=models.CASCADE)
-	mdl_id = models.ForeignKey(Role, on_delete=models.CASCADE)
+	rol_id = models.ForeignKey(Role, on_delete=models.CASCADE)
+	mdl_id = models.ForeignKey(Module, on_delete=models.CASCADE)
 
 	# """docstring for Role_Module """
 	def __str__(self):
