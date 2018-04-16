@@ -165,3 +165,7 @@ freeline_project_description.json
 
 # local database
 *.sqlite3
+
+# sublime files
+*.sublime-project
+*.sublime-workspace

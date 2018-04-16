@@ -7,4 +7,4 @@ from django.http import HttpResponse
 
 
 def index(request):
-	return HttpResponse("Landing page under construction... <a href='/admin/'>Administración</a>")
+	return render(request, 'emisora/index.html')
