@@ -52,3 +52,8 @@ class User(models.Model):
 	"""docstring for User"""
 	def __str__(self):
 		return self.usr_name + ' ' + self.usr_lastname
+
+class Category(models.Model):
+	ctg_name = models.CharField(max_length=100)
+	ctg_description = models.CharField(max_length=100)
+	ctg_image_url = models.CharField(max_length=250)
