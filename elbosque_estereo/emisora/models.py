@@ -76,8 +76,8 @@ class Subcategory(models.Model):
 	sct_image_url = models.CharField(max_length=250)
 	sct_modified_date = models.DateTimeField('Editado')
 	sct_created_date = models.DateTimeField('Creado')
-	sct_created_by = request.user
-	sct_modified_by = request.user
+	sct_created_by = models.CharField(max_length=200)
+	sct_modified_by = models.CharField(max_length=200)
 	sct_enabled = models.BooleanField(default=True)
 	"""docstring for Category"""
 	def __str__(self):
