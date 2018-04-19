@@ -53,7 +53,33 @@ class User(models.Model):
 	def __str__(self):
 		return self.usr_name + ' ' + self.usr_lastname
 
+
+
 class Category(models.Model):
 	ctg_name = models.CharField(max_length=100)
 	ctg_description = models.CharField(max_length=100)
 	ctg_image_url = models.CharField(max_length=250)
+	ctg_modified_date = models.DateTimeField('Editado')
+	ctg_created_date = models.DateTimeField('Creado')
+	ctg_created_by = models.CharField(max_length=200)
+	ctg_modified_by = models.CharField(max_length=200)
+	ctg_enabled = models.BooleanField(default=True)
+	"""docstring for Category"""
+	def __str__(self):
+		return self.ctg_name
+
+class Subcategory(models.Model):
+	# rol_id guarda al llave foránea de la clase rol
+	ctg_id = models.ForeignKey(Category, on_delete=models.CASCADE)	
+	sct_name = models.CharField(max_length=100)
+	sct_description = models.CharField(max_length=100)
+	sct_image_url = models.CharField(max_length=250)
+	sct_modified_date = models.DateTimeField('Editado')
+	sct_created_date = models.DateTimeField('Creado')
+	sct_created_by = request.user
+	sct_modified_by = request.user
+	sct_enabled = models.BooleanField(default=True)
+	"""docstring for Category"""
+	def __str__(self):
+		return self.sct_name
+
