@@ -2,21 +2,21 @@
 {% load i18n admin_urls %}
 
 {% block breadcrumbs %}
-<div class="breadcrumbs">
-<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
-&rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
-&rsaquo; <a href="{% url opts|admin_urlname:'changelist' %}">{{ module_name }}</a>
-&rsaquo; <a href="{% url opts|admin_urlname:'change' object.pk|admin_urlquote %}">{{ object|truncatewords:"18" }}</a>
-&rsaquo; {% trans 'History' %}
-</div>
+<ol class="breadcrumb">
+<li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a></li>
+<li><a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a></li>
+<li><a href="{% url opts|admin_urlname:'changelist' %}">{{ module_name }}</a></li>
+<li><a href="{% url opts|admin_urlname:'change' object.pk|admin_urlquote %}">{{ object|truncatewords:"18" }}</a></li>
+<li class="active">{% trans 'History' %}</li>
+</ol>
 {% endblock %}
 
 {% block content %}
-<div id="content-main">
+<div id="content-main" class="box box-primary">
 <div class="module">
 
 {% if action_list %}
-    <table id="change-history">
+    <table id="change-history" class="table table-bordered table-hover table-striped">
         <thead>
         <tr>
             <th scope="col">{% trans 'Date/time' %}</th>
