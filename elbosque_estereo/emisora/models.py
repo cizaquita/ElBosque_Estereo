@@ -86,3 +86,32 @@ class Subcategory(models.Model):
 	def __str__(self):
 		return self.sct_name
 
+
+class Program(models.Model):
+	# rol_id guarda al llave foránea de la clase rol
+	sct_id = models.ForeignKey(Subcategory, on_delete=models.CASCADE)	
+	prg_name = models.CharField(max_length=100)
+	prg_description = models.CharField(max_length=100)
+	prg_audio_url = models.CharField(max_length=250)
+	prg_image_url = models.CharField(max_length=250)
+	# No editable no visible
+	prg_modified_date = models.DateTimeField('Editado', editable=False)
+	prg_created_date = models.DateTimeField('Creado', editable=False)
+	prg_created_by = models.CharField(max_length=200, editable=False)
+	prg_modified_by = models.CharField(max_length=200, editable=False)
+	prg_enabled = models.BooleanField(default=True)
+	"""docstring for Category"""
+	def __str__(self):
+		return self.prg_name
+
+
+
+class Schedule_program(models.Model):
+	# rol_id guarda al llave foránea de la clase rol
+	prg_id = models.ForeignKey(Program, on_delete=models.CASCADE)
+	sp_start_time = models.DateTimeField('Inicio')
+	sp_end_time = models.DateTimeField('Final')
+	"""docstring for Category"""
+	def __str__(self):
+		return self.prg_name
+
