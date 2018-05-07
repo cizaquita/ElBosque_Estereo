@@ -8,3 +8,6 @@ from django.http import HttpResponse
 
 def index(request):
 	return render(request, 'emisora/index.html')
+
+def audio(request):
+	return render(request, 'emisora/audio.html')
