@@ -1,4 +1,6 @@
 {% extends "admin/base_login.html" %}
+
+{% load static %}
 {% load i18n static %}
 
 {% block content %}
@@ -11,22 +13,21 @@
 
     {% if form.non_field_errors %}
         {% for error in form.non_field_errors %}
-            <p class="alert alert-danger">
+            <p class="alert alert-alert" style="background-color: #f0ad4e !important">
                 {{ error }}
             </p>
         {% endfor %}
     {% endif %}
 
-
     <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
         <div class="form-group has-feedback">
-            <input type="text" id="id_username" name="username" class="form-control" placeholder="Username">
+            <input type="text" id="id_username" name="username" class="form-control" placeholder="Usuario">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
             {{ form.username.errors }}
         </div>
         <div class="form-group has-feedback">
             <input type="password" id="id_password" name="password" class="form-control"
-                   placeholder="Password">
+                   placeholder="Contraseña">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             {{ form.password.errors }}
             <input type="hidden" name="next" value="{{ next }}"/>
@@ -41,7 +42,7 @@
             <!-- /.col -->
             <div class="col-xs-4">
                 <button type="submit"
-                        class="btn btn-primary btn-block btn-flat">{% trans 'Log In' %}</button>
+                        class="btn btn-primary btn-block btn-flat" style="background-color:#7DBE4B;border-color:rgb(99, 155, 57) ">Ingresar</button>
             </div>
             <!-- /.col -->
         </div>

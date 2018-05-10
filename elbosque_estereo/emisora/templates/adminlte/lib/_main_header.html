@@ -1,12 +1,20 @@
 {% load adminlte_helpers i18n %}
+{% load static %}
 <header class="main-header">
     <!-- Logo -->
     {% block logo %}
     <a href="{% block logo_href %}/{% endblock %}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini">{% block logo_text_small %}<b>A</b>LTE{% endblock %}</span>
+        <div class="logo-mini">
+            <img src="{% static 'admin/images/logo.png' %}"  alt="IMG" style="width: 40px">
+        </div>
+        <div class="logo-lg">
+            <img src="{% static 'admin/images/banner_menu.png' %}"  alt="IMG" style="width:90%">
+        </div>
+        <!-- <span class="logo-mini">{% block logo_text_small %}<b>BS</b>{% endblock %}</span>-->
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg">{% block logo_text %}<b>Admin</b>LTE{% endblock %}</span>
+        <!-- <span class="logo-lg">{% block logo_text %}<b>El Bosque Estereo</b>{% endblock %}</span> -->
+        
     </a>
     {% endblock %}
 
