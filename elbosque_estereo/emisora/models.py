@@ -42,10 +42,11 @@ class User(models.Model):
 	usr_lastname = models.CharField(max_length=200)
 	usr_celphone = models.CharField(max_length=200)
 	usr_password = models.CharField(max_length=200)
-	usr_created_by = models.CharField(max_length=200)
-	usr_modified_by = models.CharField(max_length=200)
-	usr_created_date = models.DateTimeField('Creado')
-	usr_modified_date = models.DateTimeField('Editado')
+	# No editable no visible
+	usr_created_by = models.CharField(max_length=200, editable=False, null=True)
+	usr_modified_by = models.CharField(max_length=200, editable=False, null=True)
+	usr_created_date = models.DateTimeField('Creado', editable=False, null=True)
+	usr_modified_date = models.DateTimeField('Editado', editable=False, null=True)
 	# rol_id guarda al llave foránea de la clase rol
 	rol_id = models.ForeignKey(Role, on_delete=models.CASCADE)
 	usr_enabled = models.BooleanField(default=True)
@@ -59,10 +60,11 @@ class Category(models.Model):
 	ctg_name = models.CharField(max_length=100)
 	ctg_description = models.CharField(max_length=100)
 	ctg_image_url = models.CharField(max_length=250)
-	ctg_modified_date = models.DateTimeField('Editado')
-	ctg_created_date = models.DateTimeField('Creado')
-	ctg_created_by = models.CharField(max_length=200)
-	ctg_modified_by = models.CharField(max_length=200)
+	# No editable no visible
+	ctg_modified_date = models.DateTimeField('Editado', editable=False, null=True)
+	ctg_created_date = models.DateTimeField('Creado', editable=False, null=True)
+	ctg_created_by = models.CharField(max_length=200, editable=False, null=True)
+	ctg_modified_by = models.CharField(max_length=200, editable=False, null=True)
 	ctg_enabled = models.BooleanField(default=True)
 	"""docstring for Category"""
 	def __str__(self):
@@ -74,12 +76,42 @@ class Subcategory(models.Model):
 	sct_name = models.CharField(max_length=100)
 	sct_description = models.CharField(max_length=100)
 	sct_image_url = models.CharField(max_length=250)
-	sct_modified_date = models.DateTimeField('Editado')
-	sct_created_date = models.DateTimeField('Creado')
-	sct_created_by = models.CharField(max_length=200)
-	sct_modified_by = models.CharField(max_length=200)
+	# No editable no visible
+	sct_modified_date = models.DateTimeField('Editado', editable=False, null=True)
+	sct_created_date = models.DateTimeField('Creado', editable=False, null=True)
+	sct_created_by = models.CharField(max_length=200, editable=False, null=True)
+	sct_modified_by = models.CharField(max_length=200, editable=False, null=True)
 	sct_enabled = models.BooleanField(default=True)
 	"""docstring for Category"""
 	def __str__(self):
 		return self.sct_name
+
+
+class Program(models.Model):
+	# rol_id guarda al llave foránea de la clase rol
+	sct_id = models.ForeignKey(Subcategory, on_delete=models.CASCADE)	
+	prg_name = models.CharField(max_length=100)
+	prg_description = models.CharField(max_length=100)
+	prg_audio_url = models.CharField(max_length=250)
+	prg_image_url = models.CharField(max_length=250)
+	# No editable no visible
+	prg_modified_date = models.DateTimeField('Editado', editable=False, null=True)
+	prg_created_date = models.DateTimeField('Creado', editable=False, null=True)
+	prg_created_by = models.CharField(max_length=200, editable=False, null=True)
+	prg_modified_by = models.CharField(max_length=200, editable=False, null=True)
+	prg_enabled = models.BooleanField(default=True)
+	"""docstring for Category"""
+	def __str__(self):
+		return self.prg_name
+
+
+
+class Schedule_program(models.Model):
+	# rol_id guarda al llave foránea de la clase rol
+	prg_id = models.ForeignKey(Program, on_delete=models.CASCADE)
+	sp_start_time = models.DateTimeField('Inicio')
+	sp_end_time = models.DateTimeField('Final')
+	"""docstring for Category"""
+	def __str__(self):
+		return self.prg_name
 
