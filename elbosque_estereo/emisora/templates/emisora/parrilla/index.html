@@ -14,8 +14,8 @@
     <link href="https://unpkg.com/bootstrap@3/dist/css/bootstrap.css" rel="stylesheet">
     <link href="https://unpkg.com/angular-bootstrap-colorpicker@3/css/colorpicker.min.css" rel="stylesheet">
     <link href="https://unpkg.com/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" rel="stylesheet">
-    <script src="example.js"></script>
-    <script src="helpers.js"></script>
+    <script src="{% static 'emisora/js/example.js' %}"></script>
+    <script src="{% static 'emisora/js/helpers.js' %}"></script>
   </head>
   <body>
   <div class="container" >
@@ -38,7 +38,10 @@
           <li><a href="/admin/" style="color: white;border-right-color: rgb(125,190,75)">
             <span class="glyphicon glyphicon-log-in"></span> Acceso Administrativo</a></li>
           <li><a href="/audio/" style="color: white;border-right-color: rgb(125,190,75)">
-            <span class="glyphicon glyphicon-headphones"></span> Audio</a></li><br><br>
+            <span class="glyphicon glyphicon-headphones"></span> Audio</a></li>
+          <li><a href="/parrilla/" style="color: white;border-right-color: rgb(125,190,75)">
+            <span class="glyphicon glyphicon-list-alt"></span> Parrilla</a></li>
+            <br><br>
           </ul>
         </div>
       </div>
