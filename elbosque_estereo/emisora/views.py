@@ -11,3 +11,6 @@ def index(request):
 
 def audio(request):
 	return render(request, 'emisora/audio.html')
+
+def parrilla(request):
+	return render(request, 'emisora/parrilla/index.html')
