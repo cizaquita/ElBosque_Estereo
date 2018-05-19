@@ -26,15 +26,15 @@ def parrilla(request):
 def get_parrilla(request):
 	# La peticion debe ser en metodo GET
 	if request.method == "GET":
-		ano = request.GET.get("ano")
-		mes = request.GET.get("mes")
-		dia = request.GET.get("dia")
+		#ano = request.GET.get("ano")
+		#mes = request.GET.get("mes")
+		#dia = request.GET.get("dia")
 
 		try:
-			ano = int(ano)
-			mes = int(mes)
-			dia = int(dia)
-			programas = Programa.objects.filter(fecha_inicio=datetime.date(ano, mes, dia), habilitado=True)
+			#ano = int(ano)
+			#mes = int(mes)
+			#dia = int(dia)
+			#programas = Programa.objects.filter(fecha_inicio=datetime.date(ano, mes, dia), habilitado=True)
 			programas = Programa.objects.all()
 			data = []
 			for programa in programas:
