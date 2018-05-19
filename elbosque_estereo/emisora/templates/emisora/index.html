@@ -1,48 +1,58 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <TITLE>El Bosque Estéreo 91.7</TITLE>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="{% static 'emisora/css/base.css' %}">
-  <link rel="stylesheet" href="{% static 'emisora/css/styleinicio.css' %}">
+  <head>
+    <TITLE>El Bosque Estéreo 91.7</TITLE>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'emisora/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'emisora/css/styleinicio.css' %}">
   
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="{% static 'emisora/js/audio.js' %}"></script>
-</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static 'emisora/js/audio.js' %}"></script>
+  </head>
 
-<BODY >
-  <div class="container" >
-    <br>
-    <nav class="navbar navbar-inverse" style="border-style:hidden;background-color:rgb(125,190,75); ">
-      <div class="container-fluid">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar" ></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-        </button>
+  <BODY >
+    <div class="container" >
+      <br>
+      <nav class="navbar navbar-inverse" style="border-style:hidden;background-color:rgb(125,190,75); ">
+        <div class="container-fluid">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar" ></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
         
-        <div class="navbar-header">
-          <a class="navbar-brand" style="color: white;border-right-color: rgb(125,190,75);">
-            <h4 style="line-height: 2px">El Bosque Estéreo</h4>
-          </a>
+          <div class="navbar-header">
+            <a class="navbar-brand" style="color: white;border-right-color: rgb(125,190,75);">
+              <h4 style="line-height: 2px">El Bosque Estéreo</h4>
+            </a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+              <li></li>
+              <li>
+                <a href="/audio/" style="color: white;border-right-color: rgb(125,190,75)">
+                  <span class="glyphicon glyphicon-headphones"></span> Audio
+                </a>
+              </li>
+              <li>
+                <a href="/admin/" style="color: white;border-right-color: rgb(125,190,75)">
+                  <span class="glyphicon glyphicon-log-in"></span> Acceso Administrativo
+                </a>
+              </li>
+              <li>
+                <a href="/parrilla/" style="color: white;border-right-color: rgb(125,190,75)">
+                  <span class="glyphicon glyphicon-list-alt"></span> Parrilla
+                </a>
+              </li>
+              <br><br>
+            </ul>
+          </div>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/admin/" style="color: white;border-right-color: rgb(125,190,75)">
-            <span class="glyphicon glyphicon-log-in"></span> Acceso Administrativo</a></li>
-          <li><a href="/audio/" style="color: white;border-right-color: rgb(125,190,75)">
-            <span class="glyphicon glyphicon-headphones"></span> Audio</a></li>
-          <li><a href="/parrilla/" style="color: white;border-right-color: rgb(125,190,75)">
-            <span class="glyphicon glyphicon-list-alt"></span> Parrilla</a></li>
-            <br><br>
-          </ul>
-        </div>
-      </div>
-    </nav>
+      </nav>
       <blockquote style="border-color: white">
         <div class="row">
           <div class="col-sm-2">
@@ -51,26 +61,34 @@
               <h1 style="color:GREEN"><strong> 197</strong><code><strong>,</strong></code><strong>7</strong></h1>
               <a href="" > -->
             <div class="col-sm-1" style="font-family: candara;" style="border-color: #003300" >
-              <h1 style="color:GREEN"><strong> 91</strong><code><strong>,</strong></code><strong>7</strong></h1>
+              <h1 style="color:GREEN">
+                <strong> 91</strong>
+                <code>
+                  <strong>,</strong>
+                </code>
+                <strong>7</strong>
+              </h1>
               <video controls id="play-control" style="display: none">
-                  <source src="{% static 'emisora/media/test.wav' %}" type="video/mp4">
-                  Su navegador no soporta esta función.
-                </video>
+                <source src="{% static 'emisora/media/test.wav' %}" type="video/mp4">
+                Su navegador no soporta esta función.
+              </video>
               <div class="text-center" style="width: 100px; background: rgb(255, 151, 67);">
-                  <i id="ico_pause" class="glyphicon glyphicon-pause"></i>
-                  <i id="ico_play" class="glyphicon glyphicon-play"></i>
+                <i id="ico_pause" class="glyphicon glyphicon-pause"></i>
+                <i id="ico_play" class="glyphicon glyphicon-play"></i>
               </div>
             </div>
-          </div><br><br>
+          </div>
+          <br><br>
 
-            <ul class="nav nav-tabs nav-justified">
-              <li class="active" ><a href="#">¿Quiénes Somos?</a></li>
-              <li><a href="#" style="color:  #003300">Programas</a></li>
-              <li><a href="#" style="color:  #003300">Podscast</a></li>
-            </ul>
-            <br>
+          <ul class="nav nav-tabs nav-justified">
+            <li class="active" ><a href="#">¿Quiénes Somos?</a></li>
+            <li><a href="#" style="color:  #003300">Programas</a></li>
+            <li><a href="#" style="color:  #003300">Podscast</a></li>
+          </ul>
+          <br>
         </div>
-      </blockquote><br>
+      </blockquote>
+      <br>
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -81,7 +99,7 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
           <div class="item active">
-            <img src="{% static 'emisora/imagenes/music.png' %}" alt="UE" class="MAX" >            
+            <img src="{% static 'emisora/imagenes/music.png' %}" alt="UE" class="MAX" >
           </div>
           <div class="item">
             <img src="{% static 'emisora/imagenes/music2.jpg' %}" alt="UE2">
@@ -97,7 +115,7 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
-      </div>
-</BODY>
+    </div>
+  </BODY>
 </html>
 
