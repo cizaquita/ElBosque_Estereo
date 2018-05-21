@@ -50,7 +50,9 @@ def get_parrilla(request):
 					'url_pregrabado':programa.url_pregrabado,
 				})
 
-			return HttpResponse(json.dumps(data, cls=DjangoJSONEncoder))
+			response = HttpResponse(json.dumps(data, cls=DjangoJSONEncoder))
+			response['Access-Control-Allow-Origin'] = '*'
+			return response
 
 		except Exception as e:
 			response = JsonResponse({'status':'error', 'response':'No se encuentran registros de programas o ' + str(e)})
