@@ -39,13 +39,13 @@ class Programa(models.Model):
     )
 	# rol_id guarda al llave foránea de la clase rol
 	subcategoria = models.ForeignKey(Subcategoria, on_delete=models.CASCADE)
-	nombre = models.CharField(max_length=100)
+	nombre = models.CharField(max_length=100,unique=True)
 	descripcion = models.CharField(max_length=200)
 	fecha_inicio = models.DateTimeField('Inicio', editable=False, null=True)
 	fecha_final = models.DateTimeField('Fin', editable=False, null=True)
 	imagen_banner = models.ImageField(upload_to="media/img/programas/", default="media/img/programas/sin-imagen.jpg", blank=True, null=True, max_length=100)
 	tipo_programa = models.CharField(max_length=11, choices=TIPOS_PROGRAMA)
-	url_pregrabado = models.CharField(max_length=200, blank=True, null=True)
+	url_pregrabado = models.CharField(max_length=500, blank=True, null=True)
 	habilitado = models.BooleanField(default=True)
 	# No editable no visible
 	fecha_modificacion = models.DateTimeField('Editado', auto_now=True, editable=False, null=True)
