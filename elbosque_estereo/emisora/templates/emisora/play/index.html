@@ -163,7 +163,19 @@ $.ajax(settings).done(function (response) {
             '</div>'+
           '</article>';
     $('#contentCards').append(card);
-    console.log(cardImg);                   
+    console.log(cardImg);   
+    
+    $(function unfoldPost() {
+    var actionButton = $(".material-card-action a");
+  
+    actionButton.on("click", function(e) {
+    e.preventDefault();
+    
+    $(this).closest(".material-card").toggleClass("triggered");
+    $(this).closest(".material-card-action").toggleClass("triggered");
+    
+  });
+});
 }
 });
 
