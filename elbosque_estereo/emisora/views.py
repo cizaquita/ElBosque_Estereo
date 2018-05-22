@@ -48,7 +48,7 @@ def get_parrilla(request):
 					'descripcion':programa.descripcion,
 					'fecha_inicio':programa.fecha_inicio,
 					'fecha_final':programa.fecha_final,
-					'imagen_banner':programa.imagen_banner.path,
+					'imagen_banner':programa.imagen_banner.url,
 					'tipo_programa':programa.tipo_programa,
 					'url_pregrabado':programa.url_pregrabado,
 				})
