@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Radio Elbosquestereo</title>
+  <meta name="viewport" content="width=868">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400'>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.5/waves.min.css'>
+  <link rel='stylesheet prefetch' href='https://michael-zhigulin.github.io/mz-codepen-projects/Material%20Design%20UI%20Audio%20Player/font/font.css'>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{% static 'emisora/play/css/style.css' %}">
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar navbar-inverse" style="border-style:hidden;background-color:rgb(125,190,75); ">
+      <div class="container-fluid">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar" ></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        
+        <div class="navbar-header">
+          <a class="navbar-brand" style="color: white;border-right-color: rgb(125,190,75);">
+            <h4 style="line-height: 2px">El Bosque Estéreo</h4>
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+         <ul class="nav navbar-nav navbar-right">
+          <li><a href="/admin/" style="color: white;border-right-color: rgb(125,190,75)">
+            <span class="glyphicon glyphicon-log-in"></span> Acceso Administrativo</a></li>
+          <li><a href="/audio/" style="color: white;border-right-color: rgb(125,190,75)">
+            <span class="glyphicon glyphicon-headphones"></span> Escucha Online!</a></li>
+          <!--li><a href="/play/" style="color: white;border-right-color: rgb(125,190,75)">
+            <span class="glyphicon glyphicon-list-alt"></span> Parrilla</a></li-->
+            <br><br>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="timeline-twitter">
+      <a class="twitter-timeline"
+        href="https://twitter.com/twitterdev">
+      Tweets by @TwitterDev
+      </a> 
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+    </div>
+  <div class="player">
+    <!--<div class="like waves-effect waves-light">
+      <i class="icon-heart"></i>
+    </div>-->
+    <div class="mask"></div>
+    <ul class="player-info info-one">
+      <li>Radio en VIVO</li>
+      <li>Universidad El Bosque</li>
+      <!--<li>5:34</li>-->
+    </ul>
+    <ul class="player-info info-two">
+      <li>Radio en VIVO</li>
+      <li>Universidad El Bosque</li>
+      <!--<li><span id="duration"></span><i> / </i>5:34</li>-->
+    </ul>
+    <div id="play-button" class="unchecked">
+      <i class="icon icon-play"></i>
+    </div>
+    <div class="control-row">
+      <div class="waves-animation-one"></div>
+      <div class="waves-animation-two"></div>
+      <div id="pause-button">
+        <i class="icon"></i>
+      </div>
+      <!--<div class="seek-field">
+        <input id="audioSeekBar" min="0" max="334" step="1" value="0" type="range" oninput="audioSeekBar()" onchange="this.oninput()">
+      </div>-->
+      <div class="volume-icon">
+        <i class="icon-volume-up"></i>
+      </div>
+      <div class="volume-field">
+        <input type="range" min="0" max="100" value="100" step="1" oninput="audio.volume = this.value/100" onchange="this.oninput()">
+      </div>
+    </div>
+  </div>
+  <div class="scheduler">
+      <div class="wrap" id="contentCards">
+      </div>
+  </div>
+</div>
+<audio id="audio-player" ontimeupdate="SeekBar()" ondurationchange="CreateSeekBar()" preload="auto" loop>
+  <source src="http://giss.tv:8000/Elbosquestereo.ogg" type="audio/ogg">
+</audio>
+  <script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.5/waves.min.js'></script>
+<script  src="{% static 'emisora/play/js/index.js' %}"></script>
+<script>
+var data = [{"imagen_banner": "media/img/programas/PAZ-liftoff-long-exposure-crop-SpaceX-e1522270402441.jpg", "tipo_programa": "en_vivo", "nombre": "Los nuevos mundos que nos trae SpaceX", "url_pregrabado": null, "descripcion": "\u201cYou want to wake up in the morning and think the future is going to be great - and that's what being a spacefaring civilization is all about. It's about believing in the future and thinking tha", "categoria": "Educaci\u00f3n", "subcategoria": "Inform\u00e1tica", "fecha_final": null, "fecha_inicio": null}, {"imagen_banner": "media/img/programas/sin-imagen.jpg", "tipo_programa": "en_vivo", "nombre": "Programa de inform\u00e1tica 1", "url_pregrabado": null, "descripcion": "Este programa es de prueba", "categoria": "Educaci\u00f3n", "subcategoria": "Inform\u00e1tica", "fecha_final": null, "fecha_inicio": null}];
+
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "http://test.elbosquestereo.com/get_parrilla",
+  "method": "GET",
+  "dataType" : "json",
+  "headers": {
+    "Cache-Control": "no-cache",
+    "Postman-Token": "5fa62535-8f43-459e-b012-07d5a0a7c9de"
+  }
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+
+for(var i in data) {
+    var soundCloud = '<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/373180994&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>';
+    var cardImg = data[i].imagen_banner;
+    var cardType = data[i].tipo_programa;
+    var cardName = data[i].nombre;
+    var cardURL = data[i].url;
+    var cardDescription = (data[i].descripcion == null)? 'No disponible' : data[i].descripcion;
+    var cardCategory = data[i].categoria;
+    var cardSubCategory = data[i].subcategoria;
+    var dateStart = (data[i].fecha_inicio == null)? 'No disponible' : data[i].fecha_inicio;
+    var dateEnd = data[i].fecha_final;
+    var card ='<article class="material-card">'+
+            '<header>'+
+              '<figure class="material-card-icon ironman">';
+                if(cardImg != null){
+                  card = card+'<img src="'+cardImg+'" width="140px">';
+                }
+              card = card+'</figure>'+
+              '<h2 class="material-card-title">'+cardName+'</h2>'+
+              '<div class="material-card-action">'+
+                '<a href="#">'+
+                  '<i class="material-icons md-36">keyboard_arrow_right</i>'+
+                '</a>'+
+              '</div>'+
+              '<div class="material-card-info">'+
+                '<i class="material-icons">access_time</i>'+
+                '<time>'+dateStart+'</time>'+
+              '</div>'+
+            '</header>'+
+            '<div class="material-card-content">'+
+              '<p>'+cardDescription+'</p>';
+              if(cardURL != null || soundCloud != null){
+                card = card+soundCloud;
+              }
+            card = card+ 
+            '</div>'+
+          '</article>';
+    $('#contentCards').append(card);
+    console.log(cardImg);                   
+}
+</script>
+</body>
+</html>
