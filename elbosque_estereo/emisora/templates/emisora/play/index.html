@@ -164,8 +164,6 @@ $.ajax(settings).done(function (response) {
           '</article>';
     $('#contentCards').append(card);
     console.log(cardImg);   
-    
-});
 }
 });
 
@@ -173,12 +171,12 @@ $.ajax(settings).done(function (response) {
     var actionButton = $(".material-card-action a");
   
     actionButton.on("click", function(e) {
-    e.preventDefault();
+          e.preventDefault();
     
-    $(this).closest(".material-card").toggleClass("triggered");
-    $(this).closest(".material-card-action").toggleClass("triggered");
-    
-  }
+          $(this).closest(".material-card").toggleClass("triggered");
+          $(this).closest(".material-card-action").toggleClass("triggered");
+          }
+   }                  
 
 </script>
 </body>
