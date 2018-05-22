@@ -110,7 +110,7 @@
 <script  src="{% static 'emisora/play/js/index.js' %}"></script>
 <script>
 //var data = [{"imagen_banner": "media/img/programas/PAZ-liftoff-long-exposure-crop-SpaceX-e1522270402441.jpg", "tipo_programa": "en_vivo", "nombre": "Los nuevos mundos que nos trae SpaceX", "url_pregrabado": null, "descripcion": "\u201cYou want to wake up in the morning and think the future is going to be great - and that's what being a spacefaring civilization is all about. It's about believing in the future and thinking tha", "categoria": "Educaci\u00f3n", "subcategoria": "Inform\u00e1tica", "fecha_final": null, "fecha_inicio": null}, {"imagen_banner": "media/img/programas/sin-imagen.jpg", "tipo_programa": "en_vivo", "nombre": "Programa de inform\u00e1tica 1", "url_pregrabado": null, "descripcion": "Este programa es de prueba", "categoria": "Educaci\u00f3n", "subcategoria": "Inform\u00e1tica", "fecha_final": null, "fecha_inicio": null}];
-var data = {};
+
 var settings = {
   "async": true,
   "crossDomain": true,
@@ -122,10 +122,12 @@ var settings = {
     "Postman-Token": "5fa62535-8f43-459e-b012-07d5a0a7c9de"
   }
 }
-
+var data;
 $.ajax(settings).done(function (response) {
   data = response;
-  for(var i in data) {
+});
+
+ for(var i in data) {
     var soundCloud = '<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/373180994&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>';
     var cardImg = data[i].imagen_banner;
     var cardType = data[i].tipo_programa;
@@ -164,20 +166,7 @@ $.ajax(settings).done(function (response) {
           '</article>';
     $('#contentCards').append(card);
     console.log(cardImg); 
-    var unfoldPost = function () {
-    var actionButton = $(".material-card-action a");
-  
-    actionButton.on("click", function(e) {
-          e.preventDefault();
-    
-          $(this).closest(".material-card").toggleClass("triggered");
-          $(this).closest(".material-card-action").toggleClass("triggered");
-          });
-   }    
-}
-});
-
-              
+}        
 
 </script>
 </body>
