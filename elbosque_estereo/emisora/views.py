@@ -19,6 +19,9 @@ def audio(request):
 def parrilla(request):
 	return render(request, 'emisora/parrilla/index.html')
 
+def play(request):
+	return render(request, 'emisora/play/index.html')
+
 
 
 @xframe_options_exempt
@@ -45,7 +48,7 @@ def get_parrilla(request):
 					'descripcion':programa.descripcion,
 					'fecha_inicio':programa.fecha_inicio,
 					'fecha_final':programa.fecha_final,
-					'imagen_banner':programa.imagen_banner.url,
+					'imagen_banner':programa.imagen_banner.path,
 					'tipo_programa':programa.tipo_programa,
 					'url_pregrabado':programa.url_pregrabado,
 				})
