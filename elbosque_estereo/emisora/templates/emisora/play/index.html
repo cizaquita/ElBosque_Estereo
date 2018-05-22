@@ -112,7 +112,7 @@
 var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://test.elbosquestereo.com/get_parrilla",
+  "url": "/get_parrilla/",
   "method": "GET",
   "dataType" : "json",
   "headers": {
@@ -138,11 +138,11 @@ $.ajax(settings).done(function (response) {
   
 function crearTarjetas (data){  
  for(var i in data) {
-    var soundCloud = '<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/373180994&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>';
     var cardImg = data[i].imagen_banner;
     var cardType = data[i].tipo_programa;
     var cardName = data[i].nombre;
-    var cardURL = data[i].url;
+    var cardURL = data[i].url_pregrabado;
+      if (cardURL != null) cardURL = cardURL.replace('\\', '');
     var cardDescription = (data[i].descripcion == null)? 'No disponible' : data[i].descripcion;
     var cardCategory = data[i].categoria;
     var cardSubCategory = data[i].subcategoria;
@@ -171,7 +171,8 @@ function crearTarjetas (data){
               if(cardURL != null){
                 card = card+cardURL;
               }
-            card = card+  
+            console.log('iframe: ' + card);
+            card = card+ 
             '</div>'+
           '</article>';
     $('#contentCards').append(card);
