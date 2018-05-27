@@ -1,117 +1,57 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
-	# """ Clase Rol """	
-class Role(models.Model):
-	rol_name = models.CharField(max_length=200)
-	rol_description = models.CharField(max_length=200)
-	# URL es para: ? TODO
-	rol_url = models.CharField(max_length=200)
-	rol_enabled = models.BooleanField(default=True)
-	# """docstring for Role"""
-	def __str__(self):
-		return self.rol_name
-
-
-	# """ Clase Modulo"""
-class Module(models.Model):
-	mdl_name = models.CharField(max_length=200)
-	mdl_description = models.CharField(max_length=200)
-	# URL es para: ? TODO
-	mdl_url = models.CharField(max_length=200)
-	mdl_enabled = models.BooleanField(default=True)
-
-	# """docstring for Module"""
-	def __str__(self):
-		return self.mdl_name
-	
-	# """ Clase Rol y Modulo """
-class Role_Module(models.Model):
-	rol_id = models.ForeignKey(Role, on_delete=models.CASCADE)
-	mdl_id = models.ForeignKey(Module, on_delete=models.CASCADE)
-
-	# """docstring for Role_Module """
-	def __str__(self):
-		return 'Rol ' + self.rol_id.rol_name + ', Modulo ' + self.mdl_id.mdl_name
-
-
-	# """ Clase Usuario"""	
-class User(models.Model):
-	usr_name = models.CharField(max_length=200)
-	usr_lastname = models.CharField(max_length=200)
-	usr_celphone = models.CharField(max_length=200)
-	usr_password = models.CharField(max_length=200)
+class Categoria(models.Model):
+	nombre = models.CharField(max_length=50,unique=True)
+	descripcion = models.CharField(max_length=200)
+	habilitado = models.BooleanField(default=True)
 	# No editable no visible
-	usr_created_by = models.CharField(max_length=200, editable=False, null=True)
-	usr_modified_by = models.CharField(max_length=200, editable=False, null=True)
-	usr_created_date = models.DateTimeField('Creado', editable=False, null=True)
-	usr_modified_date = models.DateTimeField('Editado', editable=False, null=True)
-	# rol_id guarda al llave foránea de la clase rol
-	rol_id = models.ForeignKey(Role, on_delete=models.CASCADE)
-	usr_enabled = models.BooleanField(default=True)
-	"""docstring for User"""
-	def __str__(self):
-		return self.usr_name + ' ' + self.usr_lastname
-
-
-
-class Category(models.Model):
-	ctg_name = models.CharField(max_length=100)
-	ctg_description = models.CharField(max_length=100)
-	ctg_image_url = models.CharField(max_length=250)
-	# No editable no visible
-	ctg_modified_date = models.DateTimeField('Editado', editable=False, null=True)
-	ctg_created_date = models.DateTimeField('Creado', editable=False, null=True)
-	ctg_created_by = models.CharField(max_length=200, editable=False, null=True)
-	ctg_modified_by = models.CharField(max_length=200, editable=False, null=True)
-	ctg_enabled = models.BooleanField(default=True)
+	fecha_modificacion = models.DateTimeField('Editado', auto_now=True, editable=False, null=True)
+	fecha_creacion = models.DateTimeField('Creado', auto_now_add=True, editable=False, null=True)
+	#creado_por = models.ForeignKey(User, related_name='cat_creado_por', blank=True,  on_delete=models.CASCADE, editable=False)
+	#modificado_por = models.ForeignKey(User, related_name='cat_modificado_por', blank=True,  on_delete=models.CASCADE, editable=False)
 	"""docstring for Category"""
 	def __str__(self):
-		return self.ctg_name
+		return self.nombre
 
-class Subcategory(models.Model):
+class Subcategoria(models.Model):
 	# rol_id guarda al llave foránea de la clase rol
-	ctg_id = models.ForeignKey(Category, on_delete=models.CASCADE)	
-	sct_name = models.CharField(max_length=100)
-	sct_description = models.CharField(max_length=100)
-	sct_image_url = models.CharField(max_length=250)
+	categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)	
+	nombre = models.CharField(max_length=50,unique=True)
+	descripcion = models.CharField(max_length=200)
+	habilitado = models.BooleanField(default=True)
 	# No editable no visible
-	sct_modified_date = models.DateTimeField('Editado', editable=False, null=True)
-	sct_created_date = models.DateTimeField('Creado', editable=False, null=True)
-	sct_created_by = models.CharField(max_length=200, editable=False, null=True)
-	sct_modified_by = models.CharField(max_length=200, editable=False, null=True)
-	sct_enabled = models.BooleanField(default=True)
+	fecha_modificacion = models.DateTimeField('Editado', auto_now=True, editable=False, null=True)
+	fecha_creacion = models.DateTimeField('Creado', auto_now_add=True, editable=False, null=True)
+	#creado_por = models.ForeignKey(User, related_name='subcat_creado_por',blank=True, on_delete=models.CASCADE, editable=False)
+	#modificado_por = models.ForeignKey(User, related_name='subcat_modificado_por', blank=True, on_delete=models.CASCADE, editable=False)
 	"""docstring for Category"""
 	def __str__(self):
-		return self.sct_name
+		return self.nombre
 
 
-class Program(models.Model):
+class Programa(models.Model):
+	TIPOS_PROGRAMA = (
+        ('pregrabado', 'Pregrabado'),
+        ('en_vivo', 'En Vivo'),
+    )
 	# rol_id guarda al llave foránea de la clase rol
-	sct_id = models.ForeignKey(Subcategory, on_delete=models.CASCADE)	
-	prg_name = models.CharField(max_length=100)
-	prg_description = models.CharField(max_length=100)
-	prg_audio_url = models.CharField(max_length=250)
-	prg_image_url = models.CharField(max_length=250)
+	subcategoria = models.ForeignKey(Subcategoria, on_delete=models.CASCADE)
+	nombre = models.CharField(max_length=100,unique=True)
+	descripcion = models.CharField(max_length=200)
+	fecha_inicio = models.DateTimeField('Inicio')
+	fecha_final = models.DateTimeField('Fin')
+	imagen_banner = models.ImageField(upload_to="media/img/programas/", default="media/img/programas/sin-imagen.jpg", blank=True, null=True, max_length=100)
+	tipo_programa = models.CharField(max_length=11, choices=TIPOS_PROGRAMA)
+	url_pregrabado = models.CharField(max_length=500, blank=True, null=True)
+	habilitado = models.BooleanField(default=True)
 	# No editable no visible
-	prg_modified_date = models.DateTimeField('Editado', editable=False, null=True)
-	prg_created_date = models.DateTimeField('Creado', editable=False, null=True)
-	prg_created_by = models.CharField(max_length=200, editable=False, null=True)
-	prg_modified_by = models.CharField(max_length=200, editable=False, null=True)
-	prg_enabled = models.BooleanField(default=True)
+	fecha_modificacion = models.DateTimeField('Editado', auto_now=True, editable=False, null=True)
+	fecha_creacion = models.DateTimeField('Creado', auto_now_add=True, editable=False, null=True)
+	#creado_por = models.ForeignKey(User, related_name='programa_creado_por',blank=True, on_delete=models.CASCADE, editable=False)
+	#modificado_por = models.ForeignKey(User, related_name='programa_modificado_por', blank=True, on_delete=models.CASCADE, editable=False)
 	"""docstring for Category"""
 	def __str__(self):
-		return self.prg_name
-
-
-
-class Schedule_program(models.Model):
-	# rol_id guarda al llave foránea de la clase rol
-	prg_id = models.ForeignKey(Program, on_delete=models.CASCADE)
-	sp_start_time = models.DateTimeField('Inicio')
-	sp_end_time = models.DateTimeField('Final')
-	"""docstring for Category"""
-	def __str__(self):
-		return self.prg_name
-
+		return self.nombre
