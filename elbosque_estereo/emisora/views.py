@@ -14,3 +14,6 @@ def audio(request):
 
 def parrilla(request):
 	return render(request, 'emisora/parrilla/index.html')
+
+def conteo(request):
+	return render(request, 'emisora/conteo.html')

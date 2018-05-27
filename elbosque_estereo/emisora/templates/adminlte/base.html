@@ -2,7 +2,8 @@
 <html>
 <head>
     {% block title_outer %}
-        <title>{% block title %}{{ site.name }}{% endblock %}</title>
+        <!-- <title>{% block title %}{{ site.name }}{% endblock %}</title> -->
+        <title>AdminEstereo</title>
     {% endblock %}
 
     {% block meta %}
@@ -10,7 +11,7 @@
         <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     {% endblock %}
-
+    <link rel="shortcut icon" type="image/png" href="{% static 'img1.ico' %}"/>
     {% block stylesheets %}
         {% include 'adminlte/lib/_styles.html' %}
     {% endblock %}

@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <TITLE>El Bosque Stereo</TITLE>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'emisora/css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'emisora/css/styleinicio.css' %}">  
+  <link rel="stylesheet" href="{% static 'emisora/css/flipclock.css' %}" />
+  <link rel="stylesheet" href="{% static 'emisora/css/main.css' %}">  
+  <link rel="shortcut icon" type="image/png" href="{% static 'img1.ico' %}"/>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="container" >       
+      <div class="row text-center" >
+        <img src="{% static 'admin/images/img-1.png' %}" width="300px" style="margin-top: 40px" class="iembed-responsive">                 
+      </div>
+      <div class="clock"></div>
+    </div>
+  </div>  
+
+  <script src="{% static 'emisora/js/jquery.min.js' %}"></script>
+  <script src="{% static 'emisora/js/flipclock/libs/prefixfree.min.js' %}"></script>
+  <script src="{% static 'emisora/js/flipclock/flipclock.min.js' %}"></script>
+  <script src="{% static 'emisora/js/Countdown.js' %}"></script>
+</body>
+
+</html>

@@ -11,48 +11,44 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block content %}
-    <div id="content-main">
-
+    <div id="content-main ">
         {% if app_list %}
+        <div class="row">
             {% for app in app_list %}
-                <div class="box box-success ">
-                    <div class="box-header with-border">
-                        <h3 class="box-title"><a href="{{ app.app_url }}" class="section"
-                                                 title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">{{ app.name }}</a>
-                        </h3>
-
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                    class="fa fa-minus"></i>
-                            </button>
-                        </div>
-                        <!-- /.box-tools -->
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">                      
-                        {% for model in app.models %}
-                        <div class="col-md-4 col-sm-6">
-                            <div class="small-box bg-gray">
-                                <div class="inner"><h3>{{ model.name }}</h3> </div>
-                                <div class="icon"> <i class="fa fa-folder-open"></i></div>
-                                <div class="small-box-footer">
-                                    {% if model.add_url %}
-                                        <a href="{{ model.add_url }}" class="btn btn-default">Agregar  
-                                            <i class="fa fa-plus"></i></a>
-                                    {% endif %}
+                <!-- /.box-header -->                
+                    {% for model in app.models %}
+                    <div class="col-md-3 col-sm-6">                           
+                        <div class="box box-widget widget-user">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="widget-user-header" style="background-color: #3d3d3d !important;">
+                                <h2 class="widget-user-username" style="color: #ffffff !important;">{{ model.name }}</h2>                                    
+                            </div>
+                            <div class="widget-user-image">
+                                <img class="img-circle" src="{% static 'admin/images/logo.png' %}" >
+                            </div>
+                            <div class="box-footer">
+                                <div class="btn-group btn-block">                                            
                                     {% if model.admin_url %}
-                                        <a href="{{ model.admin_url }}" class="btn btn-default">Modificar  
-                                            <i class="fa fa-pencil"></i></a>
+                                    <a href="{{ model.admin_url }}" class="btn btn-block " style="color: #6aa53e;">
+                                        <label style="color:#585858" >Lista de {{ model.name }}</label>
+                                        <i class="fa fa-eye pull-right"></i>
+                                    </a>
+                                    {% endif %}
+                                    {% if model.add_url %}
+                                    <a  href="{{ model.add_url }}" class="btn btn-block" style="color: #6aa53e;">
+                                        <label style="color:#585858" >Añadir</label>
+                                        <i class="fa fa-plus pull-right"></i> 
+                                    </a>
                                     {% endif %}
                                 </div>
-                            </div>    
-                        </div>                           
-                        {% endfor %}                       
-                    </div>
-                    <!-- /.box-body -->
-                </div>
+                            </div>
+                        </div>
+                    </div>    
+                    {% endfor %}                       
+               
 
-                {% comment %}<div class="app-{{ app.app_label }} module">
+                {% comment %}
+                <div class="app-{{ app.app_label }} module">
                     <table class="table table-hover table-striped">
                         <caption>
                             <a href="{{ app.app_url }}" class="section"
@@ -82,8 +78,10 @@
                             </tr>
                         {% endfor %}
                     </table>
-                </div>{% endcomment %}
+                </div>
+                {% endcomment %}
             {% endfor %}
+            </div>
         {% else %}
             <p>{% trans "You don't have permission to edit anything." %}</p>
         {% endif %}

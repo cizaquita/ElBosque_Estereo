@@ -26,10 +26,7 @@
 
 {% block content_header %}
     {% block breadcrumbs %}
-        <ol class="breadcrumb">
-            <li><a href="{% url 'admin:index' %}"><i class="fa fa-dashboard"></i> {% trans 'Home' %}</a></li>
-            {% if title %} &rsaquo; {{ title }}{% endif %}
-        </ol>
+     
     {% endblock %}
     <!-- Content Header (Page header) -->
     <section class="content-header">

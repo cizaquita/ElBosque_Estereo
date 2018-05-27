@@ -1,0 +1,47 @@
+
+body {
+    background-color: #81818157;
+}
+
+ .container {
+    text-align: center;
+}
+
+.clock {
+    display: inline-block;
+    width: auto;
+    margin-top: 30px;
+}
+
+
+@media screen and (max-width: 819px) {
+
+    /*.home-featured .clock { margin: 0 auto; display: block; width: 322px; }*/
+    .home-featured h1 { font-size: 1.6em; }
+
+    .flip-clock-wrapper ul { height: 40px; line-height: 40px; margin: 3px; }
+    .flip-clock-wrapper ul li a div.up:after { top: 20px; }
+    .flip-clock-divider { height: 50px;  width: 18px;}
+    .flip-clock-dot { height: 6px; width: 6px; left: 7px;}
+    .flip-clock-dot.top { top: 15px; }
+    .flip-clock-dot.bottom { bottom: 18px; }
+
+    .flip-clock-divider .flip-clock-label { font-size: 12px; }
+    .flip-clock-label { right: -48px !important; }
+    
+
+    .flip-clock-wrapper ul { width: 22px; }
+    .flip-clock-wrapper ul li a div div.inn { font-size: 25px; }
+
+    /* Korekcja położenia pól zegara załamanych do nowej linii */
+    .flip-clock-wrapper ul { margin-bottom: 35px; }
+    .flip-clock-wrapper { margin-bottom: -35px; }
+}
+
+.flip-clock-divider.minutes { clear: none;}
+
+@media screen and (max-width: 550px) {
+
+    .flip-clock-divider.minutes { clear: left;} /* break clock at minutes */
+
+}
