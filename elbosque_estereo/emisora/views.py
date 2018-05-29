@@ -64,4 +64,3 @@ def get_parrilla(request):
 			response = JsonResponse({'status':'error', 'response':'No se encuentran registros de programas o ' + str(e)})
 			response['Access-Control-Allow-Origin'] = '*'
 			return response
->>>>>>> 44561dd4119656f9dd73a07e8016d5c10c0dcd3f
