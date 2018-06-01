@@ -86,16 +86,16 @@ function SeekBar() {
   seekbar.value = audio.currentTime;
 }
 
-audio.addEventListener("timeupdate", function() {
-  var duration = document.getElementById("duration");
-  var s = parseInt(audio.currentTime % 60);
-  var m = parseInt((audio.currentTime / 60) % 60);
-  duration.innerHTML = m + ':' + s;
-}, false);
+// audio.addEventListener("timeupdate", function() {
+//   var duration = document.getElementById("duration");
+//   var s = parseInt(audio.currentTime % 60);
+//   var m = parseInt((audio.currentTime / 60) % 60);
+//   duration.innerHTML = m + ':' + s;
+// }, false);
 
-Waves.init();
-Waves.attach("#play-button", ["waves-button", "waves-float"]);
-Waves.attach("#pause-button", ["waves-button", "waves-float"]);
+// Waves.init();
+// Waves.attach("#play-button", ["waves-button", "waves-float"]);
+// Waves.attach("#pause-button", ["waves-button", "waves-float"]);
 
 $(function unfoldPost() {
   var actionButton = $(".material-card-action a");
@@ -108,3 +108,4 @@ $(function unfoldPost() {
     
   });
 });
+

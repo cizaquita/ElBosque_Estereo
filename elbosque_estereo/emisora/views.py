@@ -10,8 +10,8 @@ from django.core.serializers.json import DjangoJSONEncoder
 # Create your views here.
 
 
-def index(request):
-	return render(request, 'emisora/index.html')
+# def index(request):
+# 	return render(request, 'emisora/index.html')
 
 def audio(request):
 	return render(request, 'emisora/audio.html')
@@ -23,9 +23,10 @@ def conteo(request):
 	return render(request, 'emisora/conteo.html')
 
 def play(request):
-	return render(request, 'emisora/play/index.html')
+	return render(request, 'emisora/index.html')
 
-
+def view_404(request):   
+    return render(request,'/') # or redirect('name-of-index-url')
 
 @xframe_options_exempt
 @csrf_exempt
