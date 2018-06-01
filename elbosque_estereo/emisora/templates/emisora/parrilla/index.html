@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html ng-app="mwl.calendar.docs">
   <head>
-  <title>Parrilla</title>
+  <title>El Bosque Stereo</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://unpkg.com/moment@2.17.1"></script>
     <script src="https://unpkg.com/interactjs@1"></script>
@@ -15,6 +15,7 @@
     <link href="https://unpkg.com/bootstrap@3/dist/css/bootstrap.css" rel="stylesheet">
     <link href="https://unpkg.com/angular-bootstrap-colorpicker@3/css/colorpicker.min.css" rel="stylesheet">
     <link href="https://unpkg.com/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" rel="stylesheet">
+    
     <script src="{% static 'emisora/js/example.js' %}"></script>
     <script src="{% static 'emisora/js/helpers.js' %}"></script>
   </head>
@@ -31,34 +32,30 @@
         
         <div class="navbar-header">
           <a class="navbar-brand" style="color: white;border-right-color: rgb(125,190,75);">
-            <h4 style="line-height: 2px">El Bosque Estéreo</h4>
+            <h4 style="line-height: 2px">El Bosque Stereo</h4>
           </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
          <ul class="nav navbar-nav navbar-right">
+          <li><a href="/play/" style="color: white;border-right-color: rgb(125,190,75)">
+            <span class="glyphicon glyphicon-headphones"></span> Audio</a></li>
+            <li>
+              <a href="/parrilla/" style="color: white;border-right-color: rgb(125,190,75)">
+                <span class="glyphicon glyphicon-list-alt"></span> Parrilla
+              </a>
+            </li>
           <li><a href="/admin/" style="color: white;border-right-color: rgb(125,190,75)">
-            <span class="glyphicon glyphicon-log-in"></span> Acceso Administrativo</a></li>
-          <li><a href="/audio/" style="color: white;border-right-color: rgb(125,190,75)">
-            <span class="glyphicon glyphicon-headphones"></span> Escucha Online!</a></li>
-          <!--li><a href="/play/" style="color: white;border-right-color: rgb(125,190,75)">
-            <span class="glyphicon glyphicon-list-alt"></span> Parrilla</a></li-->
-            <br><br>
+            <span class="glyphicon glyphicon-log-in"></span> Acceso Administrativo</a></li><br><br>
           </ul>
         </div>
       </div>
-    </nav><br><br>
-        <div>
-            <h1 id="site-name">
-              <h2 href="/admin/" style="color: #576337;">Parrilla de Programación</h2>
-            </h1><br>        
-         </div>
-		  
-    
+    </nav>
+
     <div ng-controller="KitchenSinkCtrl as vm">
   <h2 class="text-center">{{ vm.calendarTitle }}</h2>
 <center>
   <div class="row">
-    <div class="col-md-6 col-md-offset-3" text-center">
+    <div class="col-md-6 col-md-offset-3 text-center">
       <div class="btn-group">
         <button
           class="btn btn-success"
@@ -98,10 +95,9 @@
         <label class="btn btn-success" style="background-color: #7DBE4B" ng-model="vm.calendarView" uib-btn-radio="'year'" ng-click="vm.cellIsOpen = false">Año</label>
         <label class="btn btn-success" style="background-color: #7DBE4B" ng-model="vm.calendarView" uib-btn-radio="'month'" ng-click="vm.cellIsOpen = false">Mes</label>
         <label class="btn btn-success" style="background-color: #7DBE4B" ng-model="vm.calendarView" uib-btn-radio="'week'" ng-click="vm.cellIsOpen = false">Semana</label>
-        <label class="btn btn-success" style="background-color: #7DBE4B" ng-model="vm.calendarView" uib-btn-radio="'day'" ng-click="vm.cellIsOpen = false">Dia</label>
+        <label class="btn btn-success" style="background-color: #7DBE4B" ng-model="vm.calendarView" uib-btn-radio="'day'" ng-click="vm.cellIsOpen = false">Día</label>
       </div>
     </div>
-
   </div>
 
   <br>
@@ -111,7 +107,6 @@
     view="vm.calendarView"
     view-title="vm.calendarTitle"
     view-date="vm.viewDate"
-    on-event-click="vm.eventClicked(calendarEvent)"
     on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
     cell-is-open="vm.cellIsOpen"
     day-view-start="00:00"
@@ -123,135 +118,6 @@
   </mwl-calendar>
 
   <br><br><br>
-
-  <h3 id="event-editor">
-    Eventos
-    <button
-      class="btn btn-success pull-right"
-      ng-click="vm.addEvent()">
-      Nuevo
-    </button>
-    <div class="clearfix"></div>
-  </h3>
-
-  <table class="table table-bordered">
-
-    <thead>
-      <tr>
-        <th>Titulo</th>
-        <th>Descripción</th>
-        <th>Empieza</th>
-        <th>Termina</th>
-        <th>Deshabilita</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr ng-repeat="event in vm.events track by $index">
-        <td>
-          <input
-            type="text"
-            class="form-control"
-            ng-model="event.title">
-        </td>
-        <td>
-          <input
-            type="text"
-            class="form-control"
-            ng-model="event.descrip">
-        </td>
-        <td>
-          <p class="input-group" style="max-width: 250px">
-            <input
-              type="text"
-              class="form-control"
-              readonly
-              uib-datepicker-popup="dd MMMM yyyy"
-              ng-model="event.startsAt"
-              is-open="event.startOpen"
-              close-text="Close" >
-            <span class="input-group-btn">
-              <button
-                type="button"
-                class="btn btn-default"
-                ng-click="vm.toggle($event, 'startOpen', event)">
-                <i class="glyphicon glyphicon-calendar"></i>
-              </button>
-            </span>
-          </p>
-          <div
-            uib-timepicker
-            ng-model="event.startsAt"
-            hour-step="1"
-            minute-step="1"
-            show-meridian="true">
-          </div>
-        </td>
-        <td>
-          <p class="input-group" style="max-width: 250px">
-            <input
-              type="text"
-              class="form-control"
-              readonly
-              uib-datepicker-popup="dd MMMM yyyy"
-              ng-model="event.endsAt"
-              is-open="event.endOpen"
-              close-text="Close" >
-            <span class="input-group-btn">
-              <button
-                type="button"
-                class="btn btn-default"
-                ng-click="vm.toggle($event, 'endOpen', event)">
-                <i class="glyphicon glyphicon-calendar"></i>
-              </button>
-            </span>
-          </p>
-          <div
-            uib-timepicker
-            ng-model="event.endsAt"
-            hour-step="1"
-            minute-step="1"
-            show-meridian="true">
-          </div>
-        </td>
-        <td>
-          <p class="input-group" style="max-width: 250px">
-            <input
-              type="text"
-              class="form-control"
-              readonly
-              uib-datepicker-popup="dd MMMM yyyy"
-              ng-model="event.removeAt"
-              is-open="event.removeOpen"
-              close-text="Close">
-            <span class="input-group-btn">
-              <button
-                type="button"
-                class="btn btn-default"
-                ng-click="vm.toggle($event, 'removeOpen', event)">
-                <i class="glyphicon glyphicon-calendar"></i>
-              </button>
-            </span>
-          </p>
-          <div
-            uib-timepicker
-            ng-model="event.removeAt"
-            hour-step="1"
-            minute-step="15"
-            show-meridian="true">
-          </div>
-        </td>
-        <td>
-          <button
-            class="btn btn-danger"
-            ng-click="vm.events.splice($index, 1)">
-            Eliminar
-          </button>
-        </td>
-      </tr>
-    </tbody>
-
-  </table>
 </div>
   </center>
 </div>  
