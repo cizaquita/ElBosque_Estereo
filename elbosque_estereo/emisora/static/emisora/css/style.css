@@ -1,8 +1,8 @@
 body, html {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Open Sans', sans-serif  !important;;
 	text-rendering: optimizeLegibility !important;
 	-webkit-font-smoothing: antialiased !important;
-	color: rgba(255,255,255,0.5);
+	color: #ffffff80;
 	width: 100% !important;
 	height: 100% !important;
 }
@@ -14,14 +14,14 @@ h2 {
 	margin: 0;
 	color: rgba(5, 58, 14, 0.897);
 	margin-bottom: 30px;
-	font-size: 40px;
+	font-size: 40px  !important;
 	font-weight: 400;
 	text-transform: uppercase;
 	padding-bottom: 10px;
 }
 h3, h4 {
-	color: #333;
-	font-size: 20px;
+	color: #fff;
+	font-size: 20px !important;
 	font-weight: 400;
 }
 h5 {
@@ -109,26 +109,26 @@ ul, ol {
 	border-radius: 0;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-	background-color: rgb(37, 208, 108);
-	border-color: rgb(37, 208, 108);
+	background-color: #25d06c;
+	border-color: #25d06c;
 }
 .navbar-default .navbar-toggle:hover>.icon-bar {
 	background-color: #FFF;
 }
 .btn-default {
-	color: rgb(191, 243, 189);
-	background-color: transparent;
-	border: 2px solid rgb(92, 163, 38);
+	color: #7dbe4b !important;
+	background-color: transparent !important;
+	border: 2px solid #7dbe4b !important;
 	padding: 12px 20px;
 	margin: 0;
-	font-size: 15px;
+	font-size: 15px !important;
 	border-radius: 0;
 	text-transform: uppercase;
 }
 .btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active {
-	color: #053740;
-	background-color: rgb(125,190,75);
-	border-color: rgb(125,190,75);
+	color: #053740 !important;
+	background-color: #7dbe4b !important;
+	border-color: #7dbe4b !important;
 }
 .btn:active, .btn.active {
 	background-image: none;
@@ -147,7 +147,7 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	height: auto;
 	text-align: center;
 	color: #fff;
-	background: url(../img/intro-bg3.jpg) no-repeat center center;
+	background: url(../img/intro-bg3.jpg) no-repeat center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
@@ -393,12 +393,18 @@ img.img-circle.team-img {
 }
 /* Contact Section */
 #contact {
-	background: url(../img/fond2.jpg) no-repeat center top;
+	height: auto;
+	background: url(../img/fond2.jpg) no-repeat center fixed;
 	background-color: #7bc3d1;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
 	-o-background-size: cover;
+	display: table;
+	width: 100%;
+	height: auto;
+	text-align: center;
+	color: #fff;
 }
 #contact .overlay {
 	padding: 100px 0 40px 0;

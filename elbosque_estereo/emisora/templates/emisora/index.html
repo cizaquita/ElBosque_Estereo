@@ -1,18 +1,16 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<<<<<<< HEAD
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>El BosqueStereo</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
 
   <!-- Favicons
     ================================================== -->
   <link rel="shortcut icon" href="{% static 'img.ico' %}" type="image/x-icon">
+  <link rel='stylesheet prefetch' href='https://michael-zhigulin.github.io/mz-codepen-projects/Material%20Design%20UI%20Audio%20Player/font/font.css'>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- Bootstrap -->
   <link rel="stylesheet" type="text/css" href="{% static 'emisora/css/bootstrap.css' %}">
@@ -54,7 +52,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand page-scroll" href="#page-top">
+        <a class="navbar-brand page-scroll" id="logo">
           El BosqueStereo
           <div class="spinner text-center">
             <div class="rect1"></div>
@@ -77,9 +75,13 @@
             <a href="#" data-toggle="modal" data-target="#QuienesSomosModal">
               <i class="fa fa-info-circle"></i> Quienes Somos</a>
           </li>
-          <li>
+          <!-- <li>
             <a href="#" data-toggle="modal" data-target="#ProgramasModal">
               <i class="fa fa-tasks"></i> Programas</a>
+          </li> -->
+          <li>
+            <a href="" data-toggle="modal" id="program">
+              <i class="fa fa-calendar"></i> Programación</a>
           </li>
           <!-- <li><a href="#" class="page-scroll"><i class="fa fa-envelope"></i> Contactos</a></li> -->
           <li>
@@ -115,9 +117,10 @@
   <!-- Modals -->
   {% include "emisora/modals/QuienesSomos.html" %}
   {% include "emisora/modals/Programas.html" %}
+  {% include "emisora/parrilla/index.html" %}
   <!-- Modals -->
   <!-- Contact Section -->
-  <div id="contact" class="text-center" style="display: none">
+  <div id="contact" class="onAir text-center" style="display: none">
     <div class="overlay">
       <div class="container">
         <div class="col-md-9 col-md-offset-1">
@@ -157,7 +160,7 @@
                     <i class="icon"></i>
                   </div>
                   <div class="seek-field">
-                    <input id="audioSeekBar" min="0" max="334" step="1" value="0" type="range" oninput="audioSeekBar()" onchange="this.oninput()">
+                    <!-- <input id="audioSeekBar" min="0" max="334" step="1" value="0" type="range" oninput="audioSeekBar()" onchange="this.oninput()"> -->
                   </div>
                   <div class="volume-icon">
                     <i class="icon-volume-up"></i>
@@ -176,7 +179,7 @@
       </div>
     </div>
     <audio id="audio-player" ontimeupdate="SeekBar()" ondurationchange="CreateSeekBar()" preload="auto" loop>
-      <source src="http://giss.tv:8000/Elbosquestereo.ogg" type="audio/ogg">
+      <!-- <source src="http://giss.tv:8000/Elbosquestereo.ogg" type="audio/ogg"> -->
     </audio>
 
     <!-- <div id="footer">
@@ -188,17 +191,14 @@
         </div>
       </div>
     </div> -->
-    
-  
 
     <!-- Button trigger modal -->
-    <!-- <script type="text/javascript" src="{% static 'emisora/js/jquery.1.11.1.js' %}"></script> -->
-    <script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
+      <script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
     <script type="text/javascript" src="{% static 'emisora/js/bootstrap.js' %}"></script>    
     <script src='https://cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.5/waves.min.js'></script>
     <script type="text/javascript" src="{% static 'emisora/js/main.js' %}"></script>
     <script type="text/javascript" src="{% static 'emisora/play/js/play.js' %}"></script>
     <script type="text/javascript" src="{% static 'emisora/play/js/schedule.js' %}"></script>
     <!-- Button trigger modal -->
-
+  </body>
 </html>
