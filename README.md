@@ -1,5 +1,9 @@
 # El Bosque Estéreo
 
+## Capturas
+
+### El Bosque Stereo (emisora)
+<img src="/Capturas/01.PNG" alt="Inicio" width="200px" height="150px">  <img src="/Capturas/02.PNG" alt="Parrilla de programación" width="200px" height="150px">  <img src="/Capturas/03.PNG" alt="Login Administrativo" width="200px" height="150px">  <img src="/Capturas/04.PNG" alt="Modulo administrativo" width="200px" height="150px">  <img src="/Capturas/05.PNG" alt="Redes sociales y señal en VIVO" width="200px" height="150px"> 
 
 ## Instalación Python
 
