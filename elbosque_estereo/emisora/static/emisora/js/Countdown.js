@@ -7,7 +7,7 @@ $(document).ready(function() {
     var diferenciaMilisegundos = fechaFinal.getTime()/1000 - fechaHoy.getTime()/1000;    
   
     if(diferenciaMilisegundos<= 0){
-        window.location.href = ("http://localhost:8000/ind");
+        window.location.href = ("http://localhost:8000/play");
     }
     
     clock = $('.clock').FlipClock(diferenciaMilisegundos,{
@@ -15,7 +15,7 @@ $(document).ready(function() {
         autoStart: false,
         callbacks: {
             stop: function() {
-              window.location.href = ("http://localhost:8000/ind");
+              window.location.href = ("http://localhost:8000/play");
             }
         }        
     });
